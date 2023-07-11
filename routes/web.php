@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,32 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+/*------------------------------------------
+--------------------------------------------
+All Normal Users Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:student'])->group(function () {
+
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+});
+
+/*------------------------------------------
+--------------------------------------------
+All Super Admin Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:super-admin'])->group(function () {
+
+    Route::get('/super-admin/home', [HomeController::class, 'superAdmin'])->name('super.admin.home');
 });
