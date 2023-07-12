@@ -52,4 +52,9 @@ class User extends Authenticatable
             "super-admin"][$value],
         );
     }
+
+    public function transaction()
+    {
+        return $this->hasOne(Transaction::class);
+    }
 }
