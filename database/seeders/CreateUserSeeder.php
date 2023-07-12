@@ -20,6 +20,8 @@ class CreateUserSeeder extends Seeder
                'name'=>'Student',
                'email'=>'student@mail.co',
                'type'=>0,
+               'matno'=>'NA19/2023',
+               'phone'=>'08176129429',
                'password'=> bcrypt('asdfasdf'),
             ],
             [
